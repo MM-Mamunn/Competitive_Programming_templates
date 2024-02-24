@@ -7,7 +7,7 @@ const int N =1e4;
 int spf[N];
 void smallest_pf()
 {
- for(int i =1;i<N;i++)
+ for(int i =2;i<N;i++)
     spf[i] =i;
 /// if any error make the i*i as i only
  for(int i =2;i*i<N;i++)
