@@ -15,9 +15,20 @@ int query(int L , int R)
  
     ///floor of maximum power in the span
     ///if length = 10 , k = 3  ///(2^3) <= length
+    ///finding min or max element in O(1)
     while( (1 << (k + 1)) <= length)
         k++;
     return min(m[L][k],m[R - (1<<k) + 1][k]);
+
+    ///finding sum in O(logn)
+    //long long sum = 0;
+    //for (int i = k; i >= 0; i--) {
+    //if ((1 << i) <= R - L + 1) {
+    //   sum += m[i][L];
+    //    L += 1 << i;
+    //}
+//}
+
 }
  
 int32_t main()
