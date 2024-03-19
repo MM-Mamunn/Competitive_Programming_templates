@@ -7,30 +7,20 @@ const int LOG = 17;
 int a[MAX_N];
 int m[MAX_N][LOG]; /// m[i][j] is minimum among a[i . . i + 2^j -1]
 /// 1 2 3 4 5 6 7 8 m[3][2] is minimum among 3,4,5,6
- 
+
 int query(int L , int R)
 {
     int length = R - L + 1;
     int k = 0;
- 
+
     ///floor of maximum power in the span
     ///if length = 10 , k = 3  ///(2^3) <= length
     ///finding min or max element in O(1)
     while( (1 << (k + 1)) <= length)
         k++;
     return min(m[L][k],m[R - (1<<k) + 1][k]);
-
-    ///finding sum in O(logn)
-    //long long sum = 0;
-    //for (int i = k; i >= 0; i--) {
-    //if ((1 << i) <= R - L + 1) {
-    //   sum += m[i][L];
-    //    L += 1 << i;
-    //}
-//}
-
 }
- 
+
 int32_t main()
 {
     int n;
@@ -47,6 +37,7 @@ int32_t main()
             m[i][k] = min(m[i][k-1], m[i+ (1<<(k-1)) ][k -1]);
         }
     }
+
     int q;
     cin>>q;
     while(q--)
@@ -55,7 +46,6 @@ int32_t main()
         cin>>L>>R;
         cout<<query(L,R)<<'\n';
     }
- 
+
     return 0;
 }
- 
